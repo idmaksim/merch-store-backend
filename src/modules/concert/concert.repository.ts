@@ -26,19 +26,4 @@ export class ConcertRepository {
       where: { uuid },
     });
   }
-
-  async create(data: ConcertCreateDto, imageUrl: string) {
-    return this.prisma.concert.create({
-      data: {
-        ...data,
-        imageUrl,
-      },
-    });
-  }
-
-  async delete(uuid: string) {
-    return this.prisma.concert.delete({
-      where: { uuid },
-    });
-  }
 }

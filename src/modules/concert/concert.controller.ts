@@ -19,21 +19,6 @@ import { ConcertCreateDto } from './dto/concert.create.dto';
 export class ConcertController {
   constructor(private readonly concertService: ConcertService) {}
 
-  @Post()
-  @ApiBody({ type: ConcertCreateDto })
-  @UseInterceptors(FileInterceptor('file'))
-  async create(
-    @UploadedFile() file: Express.Multer.File,
-    @Body() body: ConcertCreateDto,
-  ) {
-    return this.concertService.create(file, body);
-  }
-
-  @Delete(':uuid')
-  async delete(@Param('uuid') uuid: string) {
-    return this.concertService.delete(uuid);
-  }
-
   @Get(':uuid')
   async findOne(@Param('uuid') uuid: string) {
     return this.concertService.findOne(uuid);
