@@ -9,6 +9,18 @@ export class ProductService {
     private readonly concertService: ConcertService,
   ) {}
 
+  async findRecommend() {
+    const products = await this.productRepository.findAll();
+    const productsUuids = products.map((product) => product.uuid);
+    const productsToGet = productsUuids.reduce((acc, uuid) => {
+      if (Math.round(Math.random()) && acc.length < 4) {
+        acc.push(uuid);
+      }
+      return acc;
+    }, []);
+    return this.findMany(productsToGet);
+  }
+
   async findAll() {
     return this.productRepository.findAll();
   }

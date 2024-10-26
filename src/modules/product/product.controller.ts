@@ -17,4 +17,9 @@ export class ProductController {
   async findMany(@Body() body: FindManyProductDto) {
     return this.productService.findMany(body.uuids);
   }
+
+  @Get('recommend')
+  async findRecommend() {
+    return this.productService.findRecommend();
+  }
 }
