@@ -1,73 +1,56 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Backend-сервис для интернет-магазина мерча
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Описание
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Этот проект представляет собой **backend-сервис** для интернет-магазина, специализирующегося на продаже мерча музыкальных групп. Сервис разработан с использованием фреймворка **NestJS** и базы данных **PostgreSQL**, управляемой через **Prisma ORM**. Основной функционал включает в себя управление пользователями, товарами, концертами и объектным хранилищем для изображений.
 
-## Description
+## Основные функции
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. **Управление пользователями**: Регистрация, аутентификация и обновление данных пользователей.
+2. **Управление товарами**: Получение информации о товарах, таких как футболки и кепки.
+3. **Управление концертами**: Получение информации о концертах.
+4. **Объектное хранилище**: Загрузка и получение изображений товаров и концертов.
+5. **Рекомендации**: Предоставление рекомендаций по товарам на основе случайного выбора.
 
-## Installation
+P.S. создание всего контента (товаров, концертов, пользователей) через сиды для БД.
 
-```bash
-$ npm install
-```
+## Используемые технологии
 
-## Running the app
+- **NestJS**: Фреймворк для создания серверных приложений на Node.js.
+- **Prisma ORM**: ORM для работы с базой данных PostgreSQL.
+- **PostgreSQL**: Реляционная база данных.
+- **AWS S3**: Объектное хранилище для хранения изображений.
+- **JWT**: Для аутентификации и авторизации пользователей.
 
-```bash
-# development
-$ npm run start
+## Установка и запуск
 
-# watch mode
-$ npm run start:dev
+1. Клонируйте репозиторий.
+2. Установите зависимости с помощью команды `npm install`.
+3. Настройте переменные окружения в файле `.env`:
+   - `AWS_ACCESS_KEY_ID`
+   - `AWS_SECRET_ACCESS_KEY`
+   - `AWS_REGION`
+   - `AWS_S3_BUCKET_NAME`
+4. Запустите миграции базы данных с помощью Prisma:
+   ```bash
+   npx prisma migrate deploy
+   ```
+5. Сделайте сиды для БД:
+   ```bash
+   npx prisma db seed
+   ```
+6. Соберите проект с помощью команды `npm run build`.
+7. Запустите сервер с помощью команды `npm run start:prod`.
 
-# production mode
-$ npm run start:prod
-```
+## Возможные ошибки и их причины
 
-## Test
+В процессе разработки проекта, учитывая сжатые сроки и минимальные требования к функционалу, могли быть допущены следующие ошибки:
 
-```bash
-# unit tests
-$ npm run test
+1. **Отсутствие тестов**: Из-за ограниченного времени не были реализованы тесты, что может привести к неустойчивости приложения при изменениях.
+2. **Минимальная обработка ошибок**: В некоторых местах обработка ошибок может быть недостаточной, что может привести к некорректной работе приложения.
+3. **Отсутствие документации**: Документация к API может быть неполной, что затрудняет интеграцию с другими системами.
+4. **Оптимизация производительности**: Некоторые части кода могут быть не оптимизированы, что может повлиять на производительность при увеличении нагрузки.
 
-# e2e tests
-$ npm run test:e2e
+## Заключение
 
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Этот проект был выполнен в рамках **заказной курсовой работы**. Основной акцент был сделан на минимально необходимом функционале, чтобы уложиться в установленные сроки. Проект может служить хорошей основой для дальнейшего расширения и улучшения функционала заказчиком.
