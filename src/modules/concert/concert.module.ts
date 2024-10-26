@@ -8,5 +8,6 @@ import { PrismaService } from '../app/prisma.service';
   imports: [],
   controllers: [ConcertController],
   providers: [ConcertService, ConcertRepository, PrismaService],
+  exports: [ConcertService],
 })
 export class ConcertModule {}

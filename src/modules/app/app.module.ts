@@ -6,6 +6,7 @@ import { UserModule } from '../user/user.module';
 import { S3Module } from 'nestjs-s3';
 import { ConcertModule } from '../concert/concert.module';
 import { ObjectStorageModule } from '../object-storage/object-storage.module';
+import { ProductModule } from '../product/product.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ObjectStorageModule } from '../object-storage/object-storage.module';
     UserModule,
     ConcertModule,
     ObjectStorageModule,
+    ProductModule,
   ],
 })
 export class AppModule {}

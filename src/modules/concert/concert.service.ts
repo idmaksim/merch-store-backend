@@ -12,4 +12,12 @@ export class ConcertService {
     }
     return concerts;
   }
+
+  async findMany(uuids: string[]) {
+    const concerts = await this.concertRepository.findMany(uuids);
+    if (!concerts) {
+      throw new NotFoundException('Concerts not found');
+    }
+    return concerts;
+  }
 }

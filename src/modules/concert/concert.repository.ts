@@ -19,4 +19,8 @@ export class ConcertRepository {
   async findAll() {
     return this.prisma.concert.findMany();
   }
+
+  async findMany(uuids: string[]) {
+    return this.prisma.concert.findMany({ where: { uuid: { in: uuids } } });
+  }
 }
