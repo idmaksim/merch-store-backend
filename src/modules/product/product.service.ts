@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConsoleLogger, Injectable } from '@nestjs/common';
 import { ProductRepository } from './product.repository';
 import { ConcertService } from '../concert/concert.service';
 import { FindAllProductDto } from './dto/product.find-all.dto';
@@ -27,14 +27,24 @@ export class ProductService {
     if (!body.isCap && !body.isTShirt) {
       return [];
     }
-    return this.productRepository.findAll({
+    const filters: any = {
       category:
         body.isCap && body.isTShirt
           ? undefined
           : body.isCap
             ? Category.CAPS
             : Category.T_SHIRTS,
-    });
+    };
+    if (body.priceFrom !== undefined) {
+      filters.price = { ...filters.price, gte: body.priceFrom };
+    }
+    if (body.priceTo !== undefined) {
+      filters.price = { ...filters.price, lte: body.priceTo };
+    }
+    if (body.title) {
+      filters.title = { contains: body.title, mode: 'insensitive' };
+    }
+    return this.productRepository.findAll(filters);
   }
 
   async findMany(uuids: string[]) {

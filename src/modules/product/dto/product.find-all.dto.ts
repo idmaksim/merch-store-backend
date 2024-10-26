@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean } from 'class-validator';
+import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class FindAllProductDto {
   @ApiProperty()
@@ -9,4 +9,19 @@ export class FindAllProductDto {
   @ApiProperty()
   @IsBoolean()
   isTShirt: boolean;
+
+  @ApiProperty()
+  @IsNumber()
+  @IsOptional()
+  priceFrom?: number;
+
+  @ApiProperty()
+  @IsNumber()
+  @IsOptional()
+  priceTo?: number;
+
+  @ApiProperty()
+  @IsString()
+  @IsOptional()
+  title?: string;
 }
