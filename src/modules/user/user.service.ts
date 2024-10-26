@@ -15,8 +15,14 @@ export class UserService {
     private readonly passwordService: PasswordService,
   ) {}
 
-  async update(uuid: string, user: UserUpdateDto) {
-    return this.userRepository.update({ uuid }, user);
+  async update(uuid: string, userDto: UserUpdateDto) {
+    const user = await this.userRepository.findOneBy({
+      email: userDto.email,
+    });
+    if (user && uuid !== user.uuid) {
+      throw new ConflictException('User with this email already exists');
+    }
+    return this.userRepository.update({ uuid }, userDto);
   }
 
   async create(user: SignUpUserDto) {
