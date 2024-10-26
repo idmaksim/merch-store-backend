@@ -8,8 +8,8 @@ const s3 = new S3({
     accessKeyId: config().S3_ACCESS_KEY_ID,
     secretAccessKey: config().S3_SECRET_ACCESS_KEY,
   },
-  region: 'ru-1',
-  endpoint: 'https://s3.timeweb.cloud',
+  region: config().REGION,
+  endpoint: config().S3_ENDPOINT,
   forcePathStyle: true,
   apiVersion: 'v4',
 });
