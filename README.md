@@ -33,6 +33,9 @@ P.S. создание всего контента (товаров, концер�
    - `PORT`
    - `S3_SECRET_ACCESS_KEY`
    - `S3_ACCESS_KEY_ID`
+   - `S3_BUCKET`
+   - `REGION`
+   - `S3_ENDPOINT`
 4. Запустите миграции базы данных с помощью Prisma:
    ```bash
    npx prisma migrate deploy
