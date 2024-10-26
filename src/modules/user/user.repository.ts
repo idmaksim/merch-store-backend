@@ -14,6 +14,13 @@ export class UserRepository {
     return this.prisma.user.findUnique({ where });
   }
 
+  async update(
+    where: Prisma.UserWhereUniqueInput,
+    data: Prisma.UserUpdateInput,
+  ) {
+    return this.prisma.user.update({ where, data });
+  }
+
   async exists(where: Prisma.UserWhereInput) {
     const user = await this.prisma.user.findFirst({
       where,

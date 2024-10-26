@@ -6,6 +6,7 @@ import {
 import { UserRepository } from './user.repository';
 import { SignUpUserDto } from '../auth/dto';
 import { PasswordService } from '../password/password.service';
+import { UserUpdateDto } from './dto/user.update.dto';
 
 @Injectable()
 export class UserService {
@@ -13,6 +14,10 @@ export class UserService {
     private readonly userRepository: UserRepository,
     private readonly passwordService: PasswordService,
   ) {}
+
+  async update(uuid: string, user: UserUpdateDto) {
+    return this.userRepository.update({ uuid }, user);
+  }
 
   async create(user: SignUpUserDto) {
     const exists = await this.userRepository.exists({
