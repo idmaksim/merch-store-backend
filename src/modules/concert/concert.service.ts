@@ -1,13 +1,5 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
-import { ObjectStorageService } from '../object-storage/object-storage.service';
-import { Express } from 'express';
-import { ConcertCreateDto } from './dto/concert.create.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { ConcertRepository } from './concert.repository';
-import { generateUrl } from './utils';
 
 @Injectable()
 export class ConcertService {

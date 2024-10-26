@@ -1,18 +1,6 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  UploadedFile,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ConcertService } from './concert.service';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { Express } from 'express';
-import { ConcertCreateDto } from './dto/concert.create.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Concert')
 @Controller('concert')

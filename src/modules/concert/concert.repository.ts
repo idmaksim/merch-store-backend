@@ -1,6 +1,5 @@
 import { PrismaService } from 'src/modules/app/prisma.service';
 import { Injectable } from '@nestjs/common';
-import { ConcertCreateDto } from './dto/concert.create.dto';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
