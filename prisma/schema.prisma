@@ -20,6 +20,7 @@ model Concert {
   title     String
   date      String
   images    String[]
+  place     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
