@@ -21,6 +21,7 @@ model Concert {
   date      String
   images    String[]
   place     String
+  price     Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
