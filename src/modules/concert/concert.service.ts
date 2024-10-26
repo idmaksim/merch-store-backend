@@ -12,12 +12,4 @@ export class ConcertService {
     }
     return concerts;
   }
-
-  async findOne(uuid: string) {
-    const concert = await this.concertRepository.findOne(uuid);
-    if (!concert) {
-      throw new NotFoundException('Concert not found');
-    }
-    return concert;
-  }
 }

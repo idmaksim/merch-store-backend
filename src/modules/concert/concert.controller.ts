@@ -7,11 +7,6 @@ import { ApiTags } from '@nestjs/swagger';
 export class ConcertController {
   constructor(private readonly concertService: ConcertService) {}
 
-  @Get(':uuid')
-  async findOne(@Param('uuid') uuid: string) {
-    return this.concertService.findOne(uuid);
-  }
-
   @Get()
   async findAll() {
     return this.concertService.findAll();

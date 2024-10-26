@@ -19,10 +19,4 @@ export class ConcertRepository {
   async findAll() {
     return this.prisma.concert.findMany();
   }
-
-  async findOne(uuid: string) {
-    return this.prisma.concert.findUnique({
-      where: { uuid },
-    });
-  }
 }
