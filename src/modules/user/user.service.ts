@@ -22,6 +22,11 @@ export class UserService {
     if (user && uuid !== user.uuid) {
       throw new ConflictException('User with this email already exists');
     }
+    if (userDto.password) {
+      userDto.password = await this.passwordService.hashPassword(
+        userDto.password,
+      );
+    }
     return this.userRepository.update({ uuid }, userDto);
   }
 
